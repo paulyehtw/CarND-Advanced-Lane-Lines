@@ -317,3 +317,4 @@ Some issues that might cause pipeline to crash:
 1. Using 2nd order polynomial might not be enough for more complicated/curved road
 2. Assuming road width as 3.7 meters might not work in other scenes
 3. If the ego car deviate from the center too much, assumption in `findLanePixels()` that it has only left and right lines might not work
+4. Lane detections will be off if the road is not uniformly paved(i.e. there's a patch on the road)
