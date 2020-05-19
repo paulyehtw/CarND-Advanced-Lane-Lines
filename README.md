@@ -33,7 +33,7 @@ To help the reviewer examine your work, please save examples of the output from 
 The `challenge_video.mp4` video is an extra (and optional) challenge for you if you want to test your pipeline under somewhat trickier conditions.  The `harder_challenge.mp4` video is another optional challenge and is brutal!
 
 If you're feeling ambitious (again, totally optional though), don't stop there!  We encourage you to go out and take video of your own, calibrate your camera and show us how you would implement this project from scratch!
-
+---
 # **Writeup for submission** 
 
 ## **Advanced Lane Finding**
@@ -118,6 +118,8 @@ Now undistort the real image from camera
   <img  src="output_images/undistorted_test1.png">
 </p>
 
+---
+
 ### **Use color transforms, gradients, etc., to create a thresholded binary image**
 Implement `thresholdBinaryImage()` with gradient and color tranformation to calculate binary images.
 
@@ -163,6 +165,8 @@ def thresholdBinaryImage(undistorted_image):
   <img  src="output_images/thresholded_binary_image.png">
 </p>
 
+---
+
 ### **Apply a perspective transform to rectify binary image ("birds-eye view")**
 Now warp the binary image onto bird's-eye view image for line polynomial fitting
 ```
@@ -191,6 +195,8 @@ def warpImage(combined_binary):
 <p align="center">
   <img  src="output_images/warped_image.png">
 </p>
+
+---
 
 ### **Detect lane pixels and fit to find the lane boundary**
 Fit the 2nd order polynomials for road lines, and calculte curvatures of lanes and vehicle position with respect to center
@@ -244,6 +250,8 @@ def fitPolynomial(binary_warped):
   <img  src="output_images/polynomial_image.png">
 </p>
 
+---
+
 ### **Warp the detected lane boundaries back onto the original image**
 Lastly unwarp the lines in bird's-eye view back in the real world space
 ```
@@ -284,8 +292,26 @@ def unwarpLanes(original_image, binary_warped, left_coeff, right_coeff, y, Minv)
   <img  src="output_images/final_result.png">
 </p>
 
+---
+
 ### **Put everything together**
 First test the pipeline on all test images
 <p align="center">
   <img  src="output_images/all_image_results.png">
 </p>
+
+Lastly implement the pipeline on the test video
+
+Check the [full video](result_video.mp4)
+<p align="center">
+  <img  src="result_video.gif">
+</p>
+
+---
+
+### **Reflection**
+Some issues that might cause pipeline to crash:
+
+1. Using 2nd order polynomial might not be enough for more complicated/curved road
+2. Assuming road width as 3.7 meters might not work in other scenes
+3. If the ego car deviate from the center too much, assumption in `findLanePixels()` that it has only left and right lines might not work
