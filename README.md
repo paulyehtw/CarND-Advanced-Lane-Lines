@@ -41,11 +41,14 @@ If you're feeling ambitious (again, totally optional though), don't stop there! 
 Environment used : Docker
 
 Installation guide : [CarND-Term1-Starter-Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/doc/configure_via_docker.md)
+
 After installing Docker, clone this repo and in the repo directory run : 
 
 ```docker run -it --rm --entrypoint "/run.sh" -p 8888:8888 -v `pwd`:/src udacity/carnd-term1-starter-kit```
 
 Then run `jupyer notebook` with another terminal to launch Jupyter Notebook
+
+Open `P2.ipynb` to run the code for this project
 
 ---
 
